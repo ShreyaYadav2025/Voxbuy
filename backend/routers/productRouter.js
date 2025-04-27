@@ -7,7 +7,7 @@ require('dotenv').config();
 
 router.post('/add', (req, res) => {
   console.log(req.body);
-  new Model( req.body).save()
+  new Model(req.body).save()
   .then((result) => {
     res.status(200).json(result);
     
@@ -17,8 +17,6 @@ router.post('/add', (req, res) => {
     
   });
 });
-
-
 
 router.get('/getbyemail/:email', (req, res) => {
   console.log(req.params.email);

@@ -5,6 +5,6 @@ const Navbar = () => {
     <div>Admin Navbar</div>
   )
 }
-<Header/>
+{/* <Header/> */}
 
 export default Navbar;
