@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const Navbar = () => {
@@ -268,9 +269,9 @@ const Navbar = () => {
                     </div>
                   </div>
                   {/* End Dropdown */}
-                  <a
+                  <Link
                     className="p-2 flex items-center text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-hidden focus:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
-                    href="#"
+                    href="/login"
                   >
                     <svg
                       className="shrink-0 size-4 me-3 md:me-2 block md:hidden"
@@ -288,7 +289,7 @@ const Navbar = () => {
                       <circle cx={12} cy={7} r={4} />
                     </svg>
                     Login
-                  </a>
+                  </Link>
                   <a
                     className="p-2 flex items-center text-sm text-gray-800 hover:bg-gray-100 rounded-lg focus:outline-hidden focus:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
                     href="#"
