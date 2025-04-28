@@ -12,10 +12,13 @@
     "@tabler/icons-react": "^3.31.0",
     "axios": "^1.8.2",
     "formik": "^2.4.6",
+    "framer-motion": "^12.9.2",
     "next": "^15.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.2",
+    "react-speech-recognition": "^4.0.0",
+    "regenerator-runtime": "^0.14.1",
     "yup": "^1.6.1"
   },
   "devDependencies": {
