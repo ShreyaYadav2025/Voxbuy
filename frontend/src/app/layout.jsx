@@ -1,5 +1,7 @@
+// 'use client';
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
+import { CartProvider } from '@/context/CartContext';
 import "./globals.css";
 import PrelineScript from "@/components/PrelineScript";
 import Navbar from "@/components/Navbar";
@@ -27,10 +29,11 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <PrelineScript />
-        <Toaster />
-        <Navbar/>
-        {children}
-        
+        <CartProvider>
+          <Toaster />
+          <Navbar/>
+          {children}
+        </CartProvider>
       </body>
     </html>
   );

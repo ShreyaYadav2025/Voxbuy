@@ -1,23 +1,24 @@
 require('dotenv').config();
-const express =require('express');
-const UserRouter =require('./routers/userRouter');
+const express = require('express');
+const UserRouter = require('./routers/userRouter');
 const ProductRouter = require('./routers/productRouter');
+const OrderRouter = require('./routers/orderRouter');
 const cors = require('cors')
 
 const app = express();
 
-const port= process.env.PORT||5000;
-
+const port = process.env.PORT || 5000;
 
 //middleware
 app.use(cors({origin: '*'}));
 app.use(express.json());
-app.use('/user',UserRouter);
-app.use('/product',ProductRouter)
+app.use('/user', UserRouter);
+app.use('/product', ProductRouter);
+app.use('/order', OrderRouter);
 
 //end point or route
 
-app.get('/',( req,res) =>{
+app.get('/', (req,res) => {
     res.send('response from request');
 });
 app.get('/add',(req,res)=>{
@@ -30,8 +31,6 @@ app.get('/delete',( req,res) =>{
     res.send('response from delete');
 });
 
-
-
-app.listen( port,()=>{
+app.listen(port, () => {
     console.log('server started')
 });

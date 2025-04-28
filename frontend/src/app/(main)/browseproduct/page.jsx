@@ -1,6 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
+import { useCart } from '@/context/CartContext';
 
 const BrowseProduct = () => {
   const [products, setProducts] = useState([]);
@@ -9,10 +11,7 @@ const BrowseProduct = () => {
   const [selectedSize, setSelectedSize] = useState('all');
   const [selectedColor, setSelectedColor] = useState('all');
   const [priceRange, setPriceRange] = useState({ min: 0, max: 1000000 });
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  const { addToCart } = useCart();
 
   const fetchProducts = async () => {
     try {
@@ -24,19 +23,15 @@ const BrowseProduct = () => {
     }
   };
 
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   const filterProducts = () => {
     let filtered = [...products];
 
     if (selectedCategory !== 'all') {
       filtered = filtered.filter(product => product.category === selectedCategory);
-    }
-
-    if (selectedSize !== 'all') {
-      filtered = filtered.filter(product => product.size.includes(selectedSize));
-    }
-
-    if (selectedColor !== 'all') {
-      filtered = filtered.filter(product => product.color.includes(selectedColor));
     }
 
     filtered = filtered.filter(product => 
@@ -48,7 +43,13 @@ const BrowseProduct = () => {
 
   useEffect(() => {
     filterProducts();
-  }, [selectedCategory, selectedSize, selectedColor, priceRange]);
+  }, [selectedCategory, priceRange]);
+
+  const handleAddToCart = (product) => {
+    const defaultSize = product.size[0] || null;
+    const defaultColor = product.color[0] || null;
+    addToCart(product, defaultSize, defaultColor, 1);
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -67,36 +68,6 @@ const BrowseProduct = () => {
             <option value="clothing">Clothing</option>
             <option value="books">Books</option>
             <option value="accessories">Accessories</option>
-          </select>
-        </div>
-
-        {/* Size Filter */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Size</label>
-          <select
-            value={selectedSize}
-            onChange={(e) => setSelectedSize(e.target.value)}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-          >
-            <option value="all">All Sizes</option>
-            {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map((size) => (
-              <option key={size} value={size}>{size}</option>
-            ))}
-          </select>
-        </div>
-
-        {/* Color Filter */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Color</label>
-          <select
-            value={selectedColor}
-            onChange={(e) => setSelectedColor(e.target.value)}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-          >
-            <option value="all">All Colors</option>
-            {['Red', 'Blue', 'Green', 'Black', 'White'].map((color) => (
-              <option key={color} value={color}>{color}</option>
-            ))}
           </select>
         </div>
 
@@ -126,57 +97,62 @@ const BrowseProduct = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredProducts.map((product) => (
           <div key={product._id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-            {/* Image Carousel */}
-            <div className="relative h-64 overflow-hidden">
-              {product.image && product.image.length > 0 && (
-                <img
-                  src={product.image[0]}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-              )}
-              {product.stock <= 5 && product.stock > 0 && (
-                <span className="absolute top-2 right-2 bg-yellow-500 text-white px-2 py-1 rounded-md text-sm">
-                  Only {product.stock} left
-                </span>
-              )}
-              {product.stock === 0 && (
-                <span className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-md text-sm">
-                  Out of Stock
-                </span>
-              )}
-            </div>
+            <Link href={`/view-product/${product._id}`}>
+              {/* Image Carousel */}
+              <div className="relative h-64 overflow-hidden">
+                {product.image && product.image.length > 0 && (
+                  <img
+                    src={product.image[0]}
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                  />
+                )}
+                {product.stock <= 5 && product.stock > 0 && (
+                  <span className="absolute top-2 right-2 bg-yellow-500 text-white px-2 py-1 rounded-md text-sm">
+                    Only {product.stock} left
+                  </span>
+                )}
+                {product.stock === 0 && (
+                  <span className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-md text-sm">
+                    Out of Stock
+                  </span>
+                )}
+              </div>
+            </Link>
 
             {/* Product Details */}
             <div className="p-4">
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">{product.name}</h3>
-              <p className="text-gray-600 text-sm mb-2 line-clamp-2">{product.description}</p>
+              <Link href={`/view-product/${product._id}`}>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">{product.name}</h3>
+                <p className="text-gray-600 text-sm mb-2 line-clamp-2">{product.description}</p>
               
-              {/* Price */}
-              <div className="text-xl font-bold text-blue-600 mb-2">
-                ${product.price.toFixed(2)}
-              </div>
+                {/* Price */}
+                <div className="text-xl font-bold text-blue-600 mb-2">
+                  ${product.price.toFixed(2)}
+                </div>
 
-              {/* Size and Color Options */}
-              <div className="mb-4">
-                <div className="flex flex-wrap gap-2 mb-2">
-                  {product.size.map((size) => (
-                    <span key={size} className="px-2 py-1 text-sm bg-gray-100 rounded-md">
-                      {size}
-                    </span>
-                  ))}
+                {/* Size and Color Options */}
+                <div className="mb-4">
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {product.size.map((size) => (
+                      <span key={size} className="px-2 py-1 text-sm bg-gray-100 rounded-md">
+                        {size}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {product.color.map((color) => (
+                      <span key={color} className="px-2 py-1 text-sm bg-gray-100 rounded-md">
+                        {color}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {product.color.map((color) => (
-                    <span key={color} className="px-2 py-1 text-sm bg-gray-100 rounded-md">
-                      {color}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              </Link>
 
               {/* Add to Cart Button */}
               <button
+                onClick={() => handleAddToCart(product)}
                 disabled={product.stock === 0}
                 className={`w-full py-2 rounded-md ${
                   product.stock === 0

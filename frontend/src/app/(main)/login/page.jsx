@@ -29,6 +29,7 @@ const Login = () => {
             axios.post(`${ process.env.NEXT_PUBLIC_API_URL}/user/authenticate`,values)
             .then((result) => {
               toast.success('login successfully');
+              localStorage.setItem('token', result.data.token); 
               resetForm();
               
             }).catch((err) => {
