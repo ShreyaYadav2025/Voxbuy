@@ -26,7 +26,22 @@ const CheckoutSchema = Yup.object().shape({
     is: 'card',
     then: (schema) => schema.required('CVV is required').matches(/^\d{3}$/, 'CVV must be 3 digits'),
   }),
-})
+});
+
+const saveCheckoutToDatabase = async (checkoutData) => {
+  try {
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout/create`, checkoutData, {
+      headers: {
+        'x-auth-token': localStorage.getItem('user-token'),
+      },
+    });
+    console.log('Checkout saved to database:', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error saving checkout to database:', error);
+    throw error;
+  }
+};
 
 export default function CheckoutPage() {
   const { cartItems, getCartTotal, clearCart } = useCart();
@@ -65,7 +80,7 @@ export default function CheckoutPage() {
   const getUserDetails = () => {
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/user/getdetails`, {
       headers: {
-        'x-auth-token': localStorage.getItem('user-token'),
+        'x-auth-token': localStorage.getItem('token'),
       },
     })
       .then((response) => {
@@ -181,6 +196,12 @@ export default function CheckoutPage() {
       } catch (error) {
         console.error('Order error:', error);
         toast.error('Error placing order. Please try again.');
+      }
+
+      try {
+        await saveCheckoutToDatabase(order);
+      } catch (error) {
+        console.error('Error saving checkout to database:', error);
       }
     });
   };

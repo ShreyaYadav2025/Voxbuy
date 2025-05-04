@@ -6,7 +6,7 @@ const OrderRouter = require('./routers/orderRouter');
 const ContactRouter = require('./routers/contactRouter');
 const FeedbackRouter = require('./routers/feedbackRouter');
 const cors = require('cors')
-const razorpay = require('./routers/razorpayRouter');
+const razorpayRouter = require('./routers/razorpayRouter');
 
 const app = express();
 
