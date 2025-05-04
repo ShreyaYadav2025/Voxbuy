@@ -96,7 +96,7 @@ export default function CheckoutPage() {
     const { name, email, phone } = userData || {};
 
     try {
-      const { data } = await axios.post('http://localhost:5000/razorpay/create-order', {
+      const { data } = await axios.post('/api/razorpay/create-order', {
         amount: calculateTotalAmount(),
         currency: 'INR',
       });
@@ -113,7 +113,7 @@ export default function CheckoutPage() {
         handler: async (response) => {
           console.log('Payment response:', response);
 
-          const verifyResponse = await axios.post('http://localhost:5000/razorpay/verify-payment', {
+          const verifyResponse = await axios.post('/api/razorpay/verify-payment', {
             razorpay_order_id: response.razorpay_order_id,
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_signature: response.razorpay_signature,
