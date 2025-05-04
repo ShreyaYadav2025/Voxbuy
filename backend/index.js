@@ -3,6 +3,8 @@ const express = require('express');
 const UserRouter = require('./routers/userRouter');
 const ProductRouter = require('./routers/productRouter');
 const OrderRouter = require('./routers/orderRouter');
+const ContactRouter = require('./routers/contactRouter');
+const FeedbackRouter = require('./routers/feedbackRouter');
 const cors = require('cors')
 
 const app = express();
@@ -15,6 +17,8 @@ app.use(express.json());
 app.use('/user', UserRouter);
 app.use('/product', ProductRouter);
 app.use('/order', OrderRouter);
+app.use('/contact', ContactRouter);
+app.use('/feedback', FeedbackRouter);
 
 //end point or route
 

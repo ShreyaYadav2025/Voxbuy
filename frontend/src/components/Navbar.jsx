@@ -10,13 +10,15 @@ const Navbar = () => {
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-2 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-gray-800">Voxbuy</Link>
+        <Link href="/" className="text-2xl font-bold text-gray-800">VOXBUY</Link>
         <ul className="hidden md:flex space-x-6">
-          <li><Link href="/" className="text-gray-600 hover:text-gray-800">Home</Link></li>
-          <li><Link href="/browseproduct" className="text-gray-600 hover:text-gray-800">Products</Link></li>
-          <li><Link href="/about" className="text-gray-600 hover:text-gray-800">About</Link></li>
-          <li><Link href="/contact" className="text-gray-600 hover:text-gray-800">Contact</Link></li>
+          <li><Link href="/" className="text-gray-800 hover:text-gray-600">Home</Link></li>
+          <li><Link href="/browseproduct" className="text-gray-800 hover:text-gray-600">Products</Link></li>
+          <li><Link href="/about" className="text-gray-800 hover:text-gray-600">About</Link></li>
+          <li><Link href="/contact" className="text-gray-800 hover:text-gray-600">Contact</Link></li>
+          <li><Link href="/feedback" className="text-gray-800 hover:text-gray-600">Feedback</Link></li>
         </ul>
+
         <div className="flex items-center space-x-4">
           <Link 
             href="/cart" 
@@ -74,6 +76,7 @@ const Navbar = () => {
           <li><Link href="/browseproduct" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Products</Link></li>
           <li><Link href="/about" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">About</Link></li>
           <li><Link href="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Contact</Link></li>
+          <li><Link href="/feedback" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Feedback</Link></li>
         </ul>
       </div>
     </nav>

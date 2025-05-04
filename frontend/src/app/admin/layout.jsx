@@ -1,12 +1,14 @@
 import React from 'react'
-import Navbar from './Navbar';
+import AdminSidebar from '@/components/AdminSidebar';
 
 const Layout = ({ children }) => {
     return (
-        <>
-            {/* <Navbar /> */}
-            {children}
-        </>
+        <div className="min-h-screen bg-gray-100">
+            <AdminSidebar />
+            <div className="ml-64 p-8">
+                {children}
+            </div>
+        </div>
     )
 }
 

@@ -23,6 +23,8 @@ const Checkout = () => {
       zipCode: '',
       country: '',
       phone: '',
+      orderNotes: '',
+      paymentMethod: '',
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required('First name is required'),
@@ -34,6 +36,7 @@ const Checkout = () => {
       zipCode: Yup.string().required('ZIP code is required'),
       country: Yup.string().required('Country is required'),
       phone: Yup.string().required('Phone number is required'),
+      paymentMethod: Yup.string().required('Please select a payment method'),
     }),
     onSubmit: async (values) => {
       setIsProcessing(true);
@@ -57,11 +60,14 @@ const Checkout = () => {
             name: item.name,
             price: item.price,
             quantity: item.quantity,
-            selectedSize: item.selectedSize,
-            selectedColor: item.selectedColor,
+            selectedSize: item.size,
+            selectedColor: item.color,
             image: item.image
           })),
-          totalAmount: getCartTotal()
+          totalAmount: getCartTotal(),
+          orderNotes: values.orderNotes,
+          paymentMethod: values.paymentMethod,
+          status: 'pending'
         }; 
 
         const response = await axios.post('http://localhost:5000/order/create', orderData);
@@ -149,6 +155,21 @@ const Checkout = () => {
             </div>
 
             <div>
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                {...formik.getFieldProps('phone')}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              />
+              {formik.touched.phone && formik.errors.phone && (
+                <div className="text-red-500 text-sm mt-1">{formik.errors.phone}</div>
+              )}
+            </div>
+
+            <div>
               <label htmlFor="address" className="block text-sm font-medium text-gray-700">
                 Address
               </label>
@@ -225,19 +246,58 @@ const Checkout = () => {
               </div>
             </div>
 
+            {/* Payment Method Selection */}
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                Phone Number
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Payment Method
               </label>
-              <input
-                type="tel"
-                id="phone"
-                {...formik.getFieldProps('phone')}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              />
-              {formik.touched.phone && formik.errors.phone && (
-                <div className="text-red-500 text-sm mt-1">{formik.errors.phone}</div>
+              <div className="space-y-2">
+                <div className="flex items-center">
+                  <input
+                    type="radio"
+                    id="cod"
+                    name="paymentMethod"
+                    value="cod"
+                    onChange={formik.handleChange}
+                    checked={formik.values.paymentMethod === 'cod'}
+                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                  />
+                  <label htmlFor="cod" className="ml-2 block text-sm text-gray-700">
+                    Cash on Delivery
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="radio"
+                    id="online"
+                    name="paymentMethod"
+                    value="online"
+                    onChange={formik.handleChange}
+                    checked={formik.values.paymentMethod === 'online'}
+                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                  />
+                  <label htmlFor="online" className="ml-2 block text-sm text-gray-700">
+                    Online Payment
+                  </label>
+                </div>
+              </div>
+              {formik.touched.paymentMethod && formik.errors.paymentMethod && (
+                <div className="text-red-500 text-sm mt-1">{formik.errors.paymentMethod}</div>
               )}
+            </div>
+
+            {/* Order Notes */}
+            <div>
+              <label htmlFor="orderNotes" className="block text-sm font-medium text-gray-700">
+                Order Notes (Optional)
+              </label>
+              <textarea
+                id="orderNotes"
+                {...formik.getFieldProps('orderNotes')}
+                rows="3"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                placeholder="Any special instructions for delivery"
+              />
             </div>
 
             <button
@@ -260,11 +320,11 @@ const Checkout = () => {
             <h2 className="text-2xl font-bold mb-6">Order Summary</h2>
             <div className="space-y-4 mb-6">
               {cart.map((item) => (
-                <div key={`${item._id}-${item.selectedSize}-${item.selectedColor}`} className="flex items-center justify-between">
+                <div key={`${item._id}-${item.size}-${item.color}`} className="flex items-center justify-between">
                   <div className="flex items-center">
-                    {item.image && item.image[0] && (
+                    {item.image && (
                       <img
-                        src={item.image[0]}
+                        src={item.image}
                         alt={item.name}
                         className="w-16 h-16 object-cover rounded-md mr-4"
                       />
@@ -272,10 +332,11 @@ const Checkout = () => {
                     <div>
                       <h3 className="font-medium">{item.name}</h3>
                       <p className="text-sm text-gray-500">
-                        {item.selectedSize && `Size: ${item.selectedSize}`}
-                        {item.selectedColor && ` • Color: ${item.selectedColor}`}
+                        {item.size && `Size: ${item.size}`}
+                        {item.color && ` • Color: ${item.color}`}
+                        {` • Qty: ${item.quantity}`}
                       </p>
-                      <p className="text-sm text-gray-500">Quantity: {item.quantity}</p>
+                      <p className="text-sm text-gray-500">${item.price.toFixed(2)} each</p>
                     </div>
                   </div>
                   <div className="font-medium">${(item.price * item.quantity).toFixed(2)}</div>
@@ -290,7 +351,7 @@ const Checkout = () => {
               </div>
               <div className="flex justify-between mb-2">
                 <span>Shipping</span>
-                <span>$0.00</span>
+                <span>Free</span>
               </div>
               <div className="flex justify-between font-bold text-lg mt-4 border-t pt-4">
                 <span>Total</span>

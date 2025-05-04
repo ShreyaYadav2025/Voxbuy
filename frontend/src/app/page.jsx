@@ -2,30 +2,39 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div><>      
+    <div>      
     {/* hero - start */}
-    <div className="bg-white pb-6 sm:pb-8 lg:pb-12">
-
+    <div className="bg-gradient-to-b bg-[#0a0a0a] bg-gradient-to-r from-pink-600 via-purple-400 to-teal-400
+ from-blue-50 to-white pb-6 sm:pb-8 lg:pb-12">
       <section className="mx-auto max-w-screen-2xl px-4 md:px-8">
         <div className="mb-8 flex flex-wrap justify-between md:mb-16">
           <div className="mb-6 flex w-full flex-col justify-center sm:mb-12 lg:mb-0 lg:w-1/3 lg:pb-24 lg:pt-48">
-            <h1 className="mb-4 text-4xl font-bold text-black sm:text-5xl md:mb-8 md:text-6xl">
-              Find your
+            <h1 className="mb-4 text-4xl font-bold text-gray-900 sm:text-5xl md:mb-8 md:text-6xl">
+              Discover Your
               <br />
-              style online
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Perfect Style
+              </span>
             </h1>
-            <p className="max-w-md leading-relaxed text-gray-500 xl:text-lg">
-              This is a section of some simple filler text, also known as
-              placeholder text. It shares characteristics of real text.
+            <p className="max-w-md leading-relaxed text-gray-800 xl:text-lg">
+              Explore our curated collection of trendsetting fashion. From casual comfort to elegant statements, find pieces that define your unique style.
             </p>
+            <div className="mt-8 flex gap-4">
+              <a href="/browseproduct" className="inline-block rounded-lg bg-blue-600 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-blue-300 transition duration-100 hover:bg-blue-700 focus-visible:ring active:bg-blue-800 md:text-base">
+                Shop Now
+              </a>
+              <a href="/about" className="inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-600 outline-none ring-blue-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base">
+                Learn More
+              </a>
+            </div>
           </div>
-          <div className="mb-12 flex w-full md:mb-16 lg:w-2/3">
+          <div className="mb-12 flex w-full md:mb-16 lg:w-2/3 ">
             <div className="relative left-12 top-12 z-10 -ml-12 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:left-16 md:top-16 lg:ml-0">
               <img
                 src="https://images.unsplash.com/photo-1542340916-951bb72c8f74?auto=format&q=75&fit=crop&w=550&h=550"
                 loading="lazy"
                 alt="Photo by Kaung Htet"
-                className="h-full w-full object-cover object-center"
+                className="h-full w-full object-cover object-center transition duration-200 hover:scale-110"
               />
             </div>
             <div className="overflow-hidden rounded-lg bg-gray-100 shadow-lg">
@@ -33,32 +42,35 @@ const page = () => {
                 src="https://images.unsplash.com/photo-1586295166487-b265f7e83a7f?auto=format&q=75&fit=crop&w=550&h=550"
                 loading="lazy"
                 alt="Photo by Manny Moreno"
-                className="h-full w-full object-cover object-center"
+                className="h-full w-full object-cover object-center transition duration-200 hover:scale-110"
               />
             </div>
           </div>
         </div>
+
+        {/* Categories Bar */}
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
-          <div className="flex h-12 w-64 divide-x overflow-hidden rounded-lg border">
+          <div className="flex h-12 w-64 divide-x overflow-hidden rounded-lg border-2 border-blue-600">
             <a
-              href="#"
-              className="flex w-1/3 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200"
+              href="/browseproduct?category=men"
+              className="flex w-1/3 items-center justify-center bg-white text-gray-700 transition duration-100 hover:bg-blue-50 active:bg-blue-100"
             >
               Men
             </a>
             <a
-              href="#"
-              className="flex w-1/3 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200"
+              href="/browseproduct?category=women"
+              className="flex w-1/3 items-center justify-center bg-white text-gray-700 transition duration-100 hover:bg-blue-50 active:bg-blue-100"
             >
               Women
             </a>
             <a
-              href="#"
-              className="flex w-1/3 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200"
+              href="/browseproduct?category=kids"
+              className="flex w-1/3 items-center justify-center bg-white text-gray-700 transition duration-100 hover:bg-blue-50 active:bg-blue-100"
             >
-              Teens
+              Kids
             </a>
           </div>
+
           {/* social - start */}
           <div className="flex items-center justify-center gap-4 lg:justify-start">
             <span className="text-sm font-semibold uppercase tracking-widest text-gray-400 sm:text-base">
@@ -120,34 +132,29 @@ const page = () => {
         </div>
       </section>
     </div>
-    {/* hero - end */}
-    {/* product-grid - start */}
-    <div className="bg-white py-6 sm:py-8 lg:py-12">
+
+    {/* Featured Products */}
+    <div className="bg-white py-6 bg-gradient-to-r from-pink-500 via-purple-500 to-teal-400
+ sm:py-8 lg:py-12">
       <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
-        {/* text - start */}
         <div className="mb-10 md:mb-16">
           <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">
-            Selected
+            Featured Collections
           </h2>
-          <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">
-            This is a section of some simple filler text, also known as
-            placeholder text. It shares some characteristics of a real written
-            text but is random or otherwise generated.
+          <p className="mx-auto max-w-screen-md text-center text-black-500 md:text-lg">
+            Discover our handpicked selection of trending styles and must-have pieces for this season.
           </p>
         </div>
-        {/* text - end */}
+
         <div className="grid gap-x-4 gap-y-8 sm:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:grid-cols-4">
-          {/* product - start */}
-          <div>
-            <a
-              href="#"
-              className="group relative mb-2 block h-96 overflow-hidden rounded-lg bg-gray-100 shadow-lg lg:mb-3"
-            >
+          {/* Product Cards */}
+          <div className="group relative">
+            <div className="relative mb-2 overflow-hidden rounded-lg bg-gray-100">
               <img
                 src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&q=75&fit=crop&crop=top&w=600&h=700"
                 loading="lazy"
                 alt="Photo by Austin Wade"
-                className="h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
+                className="h-96 w-full object-cover object-center transition duration-200 group-hover:scale-110"
               />
               <div className="absolute bottom-2 left-0 flex gap-2">
                 <span className="rounded-r-lg bg-red-500 px-3 py-1.5 text-sm font-semibold uppercase tracking-wider text-white">
@@ -157,7 +164,8 @@ const page = () => {
                   New
                 </span>
               </div>
-            </a>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
+            </div>
             <div className="flex items-start justify-between gap-2 px-2">
               <div className="flex flex-col">
                 <a
@@ -174,20 +182,15 @@ const page = () => {
               </div>
             </div>
           </div>
-          {/* product - end */}
-          {/* product - start */}
-          <div>
-            <a
-              href="#"
-              className="group relative mb-2 block h-96 overflow-hidden rounded-lg bg-gray-100 shadow-lg lg:mb-3"
-            >
+          <div className="group relative">
+            <div className="relative mb-2 overflow-hidden rounded-lg bg-gray-100">
               <img
                 src="https://images.unsplash.com/photo-1523359346063-d879354c0ea5?auto=format&q=75&fit=crop&crop=top&w=600&h=700"
                 loading="lazy"
                 alt="Photo by Nick Karvounis"
-                className="h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
+                className="h-96 w-full object-cover object-center transition duration-200 group-hover:scale-110"
               />
-            </a>
+            </div>
             <div className="flex items-start justify-between gap-2 px-2">
               <div className="flex flex-col">
                 <a
@@ -203,20 +206,15 @@ const page = () => {
               </div>
             </div>
           </div>
-          {/* product - end */}
-          {/* product - start */}
-          <div>
-            <a
-              href="#"
-              className="group relative mb-2 block h-96 overflow-hidden rounded-lg bg-gray-100 shadow-lg lg:mb-3"
-            >
+          <div className="group relative">
+            <div className="relative mb-2 overflow-hidden rounded-lg bg-gray-100">
               <img
                 src="https://images.unsplash.com/photo-1548286978-f218023f8d18?auto=format&q=75&fit=crop&crop=top&w=600&h=700"
                 loading="lazy"
                 alt="Photo by Austin Wade"
-                className="h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
+                className="h-96 w-full object-cover object-center transition duration-200 group-hover:scale-110"
               />
-            </a>
+            </div>
             <div className="flex items-start justify-between gap-2 px-2">
               <div className="flex flex-col">
                 <a
@@ -232,20 +230,15 @@ const page = () => {
               </div>
             </div>
           </div>
-          {/* product - end */}
-          {/* product - start */}
-          <div>
-            <a
-              href="#"
-              className="group relative mb-2 block h-96 overflow-hidden rounded-lg bg-gray-100 shadow-lg lg:mb-3"
-            >
+          <div className="group relative">
+            <div className="relative mb-2 overflow-hidden rounded-lg bg-gray-100">
               <img
                 src="https://images.unsplash.com/photo-1566207274740-0f8cf6b7d5a5?auto=format&q=75&fit=crop&crop=top&w=600&h=700"
                 loading="lazy"
                 alt="Photo by Vladimir Fedotov"
-                className="h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
+                className="h-96 w-full object-cover object-center transition duration-200 group-hover:scale-110"
               />
-            </a>
+            </div>
             <div className="flex items-start justify-between gap-2 px-2">
               <div className="flex flex-col">
                 <a
@@ -261,53 +254,47 @@ const page = () => {
               </div>
             </div>
           </div>
-          {/* product - end */}
         </div>
       </div>
     </div>
-    {/* product-grid - end */}
-    {/* call to action - start */}
-    <div className="bg-white py-6 sm:py-8 lg:py-12">
+
+    {/* Call to Action */}
+    <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-6 sm:py-8 lg:py-12">
       <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
-        <div className="flex flex-col overflow-hidden rounded-lg bg-gray-900 sm:flex-row md:h-80">
-          {/* content - start */}
+        <div className="flex flex-col overflow-hidden rounded-lg bg-white shadow-lg sm:flex-row md:h-80">
           <div className="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-2/5">
-            <h2 className="mb-4 text-xl font-bold text-white md:text-2xl lg:text-4xl">
+            <h2 className="mb-4 text-xl font-bold text-gray-800 md:text-2xl lg:text-4xl">
               Summer Sale
               <br />
-              Up to 70% off.
+              <span className="text-blue-600">Up to 70% off</span>
             </h2>
-            <p className="mb-8 max-w-md text-gray-400">
-              This is a section of some simple filler text, also known as
-              placeholder text. It shares some characteristics of a real written
-              text.
+            <p className="mb-8 max-w-md text-gray-600">
+              Don't miss out on our biggest sale of the season. Refresh your wardrobe with the latest trends at unbeatable prices.
             </p>
             <div className="mt-auto">
               <a
-                href="#"
-                className="inline-block rounded-lg bg-white px-8 py-3 text-center text-sm font-semibold text-gray-800 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-100 focus-visible:ring active:bg-gray-200 md:text-base"
+                href="/browseproduct"
+                className="inline-block rounded-lg bg-blue-600 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-blue-300 transition duration-100 hover:bg-blue-700 focus-visible:ring active:bg-blue-800 md:text-base"
               >
-                Save now
+                Shop the Sale
               </a>
             </div>
           </div>
-          {/* content - end */}
-          {/* image - start */}
           <div className="order-first h-48 w-full bg-gray-700 sm:order-none sm:h-auto sm:w-1/2 lg:w-3/5">
             <img
               src="https://images.unsplash.com/photo-1505846951821-e25bacf2eccd?auto=format&q=75&fit=crop&crop=top&w=1000&h=500"
               loading="lazy"
-              alt="Photo by Dom Hill"
+              alt="Summer Sale"
               className="h-full w-full object-cover object-center"
             />
           </div>
-          {/* image - end */}
         </div>
       </div>
     </div>
-    {/* call to action - end */}
+
     {/* collections - start */}
-    <div className="bg-white py-6 sm:py-8 lg:py-12">
+    <div className=" bg-gradient-to-r from-pink-500 via-purple-500 to-teal-400
+bg-white py-6 sm:py-8 lg:py-12">
       <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
         <h2 className="mb-8 text-center text-2xl font-bold text-gray-800 md:mb-12 lg:text-3xl">
           Collections
@@ -402,10 +389,11 @@ const page = () => {
     </div>
     {/* collections - end */}
     {/* newsletter - start */}
-    <div className="bg-white py-6 sm:py-8 lg:py-12">
-      <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
-        <div className="flex flex-col items-center rounded-lg bg-gray-100 p-4 sm:p-8 lg:flex-row lg:justify-between">
-          <div className="mb-4 sm:mb-8 lg:mb-0">
+    <div className=" bg-gradient-to-r from-pink-500 via-purple-500 to-teal-400
+bg-gray py-6 sm:py-8 lg:py-12">
+      <div className=" mx-auto max-w-screen-2xl px-4 md:px-8">
+        <div className=" flex flex-col items-center rounded-lg bg-gray-100 p-4 sm:p-8 lg:flex-row lg:justify-between">
+          <div className=" mb-4 sm:mb-8 lg:mb-0">
             <h2 className="text-center text-xl font-bold text-indigo-500 sm:text-2xl lg:text-left lg:text-3xl">
               Get the latest updates
             </h2>
@@ -446,7 +434,7 @@ const page = () => {
     </div>
     {/* newsletter - end */}
     {/* footer - start */}
-    <div className="bg-white pt-4 sm:pt-10 lg:pt-12">
+    <div className=" bg-white pt-4 sm:pt-10 lg:pt-12">
       <footer className="mx-auto max-w-screen-2xl px-4 md:px-8">
         <div className="mb-16 grid grid-cols-2 gap-12 border-t pt-10 md:grid-cols-4 lg:grid-cols-6 lg:gap-8 lg:pt-12">
           <div className="col-span-full lg:col-span-2">
@@ -699,7 +687,6 @@ const page = () => {
       </footer>
     </div>
     {/* footer - end */}
-  </>
   </div>
   )
 }

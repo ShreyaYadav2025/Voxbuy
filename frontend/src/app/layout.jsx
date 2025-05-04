@@ -6,6 +6,7 @@ import "./globals.css";
 import PrelineScript from "@/components/PrelineScript";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { VoiceProvider } from "@/context/VoiceContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,11 +30,13 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <PrelineScript />
-        <CartProvider>
-          <Toaster />
-          <Navbar/>
-          {children}
-        </CartProvider>
+        <VoiceProvider>
+          <CartProvider>
+            <Toaster />
+            <Navbar />
+            {children}
+          </CartProvider>
+        </VoiceProvider>
       </body>
     </html>
   );
