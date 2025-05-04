@@ -4,6 +4,7 @@ const UserRouter = require('./routers/userRouter');
 const ProductRouter = require('./routers/productRouter');
 const OrderRouter = require('./routers/orderRouter');
 const cors = require('cors')
+const razorpay = require('./routers/razorpayRouter');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use('/user', UserRouter);
 app.use('/product', ProductRouter);
 app.use('/order', OrderRouter);
+app.use('/razorpay', razorpayRouter);
 
 //end point or route
 
