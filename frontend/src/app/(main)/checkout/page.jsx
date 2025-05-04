@@ -202,7 +202,7 @@ export default function CheckoutPage() {
         validationSchema={CheckoutSchema}
         onSubmit={handleSubmit}
       >
-        {({ values }) => (
+        {(formik) => (
           <Form style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <div>
               <label className='font-bold p-1'>Full Name</label><br />
