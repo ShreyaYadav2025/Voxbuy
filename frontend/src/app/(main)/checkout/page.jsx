@@ -222,6 +222,7 @@ export default function CheckoutPage() {
               <ErrorMessage name="city" component="div" style={{ color: 'red' }} />
             </div>
 
+            {/* Payment Method Selection */}
             <div>
               <label className='font-bold p-1'>Postal Code</label><br />
               <Field name="postalCode" className="w-full p-3 border-2 border-black rounded-lg" />
@@ -247,6 +248,20 @@ export default function CheckoutPage() {
                 </label>
               </div>
               <ErrorMessage name="paymentMethod" component="div" style={{ color: 'red' }} />
+            </div>
+
+            {/* Order Notes */}
+            <div>
+              <label htmlFor="orderNotes" className="block text-sm font-medium text-gray-700">
+                Order Notes (Optional)
+              </label>
+              <textarea
+                id="orderNotes"
+                {...formik.getFieldProps('orderNotes')}
+                rows="3"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                placeholder="Any special instructions for delivery"
+              />
             </div>
 
             <button
