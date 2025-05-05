@@ -4,7 +4,7 @@ const Order = require('../models/orderModel');
 const Product = require('../models/productModel');
 
 // Create new order
-router.post('/create', async (req, res) => {
+router.post('/add', async (req, res) => {
     try {
         // Create the order
         const order = await Order.create(req.body);

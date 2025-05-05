@@ -4,6 +4,7 @@ const router = express.Router();
 const Model =require('../models/userModel');
 const jwt =require('jsonwebtoken');
 require('dotenv').config();
+const verifyToken = require('../middlewares/verifyToken');
 
 router.post('/add', (req, res) => {
   console.log(req.body);
@@ -90,7 +91,19 @@ router.post('/authenticate',(req,res)=>{
   });
 })
 
-//getbyid
-//update
-//delete
+router.get('/getdetails', verifyToken, async (req, res) => {
+  try {
+    console.log(req.user);
+    
+    const user = await Model.findById(req.user._id).select('-password'); // Exclude password from the response
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    console.error('Error fetching user details:', error);
+    res.status(500).json({ message: 'Failed to fetch user details' });
+  }
+});
+
 module.exports = router;
