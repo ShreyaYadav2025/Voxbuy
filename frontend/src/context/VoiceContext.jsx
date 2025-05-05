@@ -129,7 +129,15 @@ const pageDetails = [
   },
 ]
 
-const speech = new SpeechSynthesisUtterance();
+const speechRef = useRef(null);
+
+// useEffect(() => {
+//   if (typeof window !== 'undefined') {
+//     speechRef.current = new SpeechSynthesisUtterance();
+//   }
+// }, []);
+
+// const speech = new SpeechSynthesisUtterance();
 const VoiceContext = createContext();
 
 export const VoiceProvider = ({ children }) => {
