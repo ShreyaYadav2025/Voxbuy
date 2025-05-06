@@ -5,8 +5,8 @@ const ProductRouter = require('./routers/productRouter');
 const OrderRouter = require('./routers/orderRouter');
 const ContactRouter = require('./routers/contactRouter');
 const FeedbackRouter = require('./routers/feedbackRouter');
-const cors = require('cors')
 const razorpayRouter = require('./routers/razorpayRouter');
+const cors = require('cors')
 
 const app = express();
 

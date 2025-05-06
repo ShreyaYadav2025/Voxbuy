@@ -129,7 +129,7 @@ const pageDetails = [
   },
 ]
 
-const speechRef = useRef(null);
+// const speechRef = useRef(null);
 
 // useEffect(() => {
 //   if (typeof window !== 'undefined') {

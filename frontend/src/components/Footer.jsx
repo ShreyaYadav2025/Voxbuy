@@ -2,216 +2,259 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div><>
-    {/* ========== FOOTER ========== */}
-    <footer className="mt-auto bg-gray-900 w-full dark:bg-neutral-950">
-      <div className="mt-auto w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 lg:pt-20 mx-auto">
-        {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-          <div className="col-span-full lg:col-span-1">
-            <a
-              className="flex-none text-xl font-semibold text-white focus:outline-hidden focus:opacity-80"
-              href="#"
-              aria-label="Brand"
-            >
-              Brand
-            </a>
+    <div className="bg-black pt-4 sm:pt-10 lg:pt-12">
+      <footer className="mx-auto max-w-screen-2xl px-4 md:px-8">
+        <div className="mb-16 grid grid-cols-2 gap-12 border-t border-gray-800 pt-10 md:grid-cols-4 lg:grid-cols-6 lg:gap-8 lg:pt-12">
+          <div className="col-span-full lg:col-span-2">
+            {/* logo - start */}
+            <div className="mb-4 lg:-mt-2">
+              <a
+                href="/"
+                className="inline-flex items-center gap-2 text-xl font-bold text-white md:text-2xl"
+                aria-label="logo"
+              >
+                <svg
+                  width={95}
+                  height={94}
+                  viewBox="0 0 95 94"
+                  className="h-auto w-5 text-rose-500"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M96 0V47L48 94H0V47L48 0H96Z" />
+                </svg>
+                VOXBUY
+              </a>
+            </div>
+            {/* logo - end */}
+            <p className="mb-6 text-gray-400 sm:pr-8">
+              Filler text is dummy text which has no meaning however looks very
+              similar to real text.
+            </p>
+            {/* social - start */}
+            <div className="flex gap-4">
+              <a
+                href="#"
+                target="_blank"
+                className="text-gray-400 transition duration-100 hover:text-rose-500 active:text-rose-600"
+              >
+                <svg
+                  className="h-5 w-5"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                className="text-gray-400 transition duration-100 hover:text-rose-500 active:text-rose-600"
+              >
+                <svg
+                  className="h-5 w-5"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                className="text-gray-400 transition duration-100 hover:text-rose-500 active:text-rose-600"
+              >
+                <svg
+                  className="h-5 w-5"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M19.4168 2.4594C17.7648 0.873472 15.4785 0 12.9793 0C9.1616 0 6.81353 1.56493 5.51603 2.87767C3.91693 4.49547 3 6.64362 3 8.77138C3 11.4429 4.11746 13.4934 5.98876 14.2563C6.11439 14.3078 6.24081 14.3337 6.36475 14.3337C6.75953 14.3337 7.07233 14.0754 7.1807 13.661C7.24389 13.4233 7.39024 12.8369 7.45389 12.5823C7.59011 12.0795 7.48005 11.8377 7.18295 11.4876C6.64173 10.8472 6.38969 10.0899 6.38969 9.10438C6.38969 6.17698 8.56948 3.06578 12.6095 3.06578C15.8151 3.06578 17.8064 4.88772 17.8064 7.82052C17.8064 9.67124 17.4077 11.3852 16.6837 12.6468C16.1805 13.5235 15.2957 14.5685 13.9375 14.5685C13.3501 14.5685 12.8225 14.3272 12.4896 13.9066C12.1751 13.5089 12.0714 12.9953 12.1979 12.4599C12.3408 11.855 12.5357 11.2241 12.7243 10.6141C13.0682 9.5001 13.3933 8.44789 13.3933 7.60841C13.3933 6.17252 12.5106 5.20769 11.1969 5.20769C9.52737 5.20769 8.21941 6.90336 8.21941 9.06805C8.21941 10.1297 8.50155 10.9237 8.62929 11.2286C8.41896 12.1197 7.16899 17.4176 6.93189 18.4166C6.79478 18.9997 5.96893 23.6059 7.33586 23.9731C8.87168 24.3858 10.2445 19.8997 10.3842 19.3928C10.4975 18.9806 10.8937 17.4216 11.1365 16.4634C11.878 17.1775 13.0717 17.6603 14.2333 17.6603C16.4231 17.6603 18.3924 16.6749 19.7786 14.8858C21.1229 13.1505 21.8633 10.7318 21.8633 8.0757C21.8632 5.99923 20.9714 3.95209 19.4168 2.4594Z" />
+                </svg>
+              </a>
+            </div>
+            {/* social - end */}
           </div>
-          {/* End Col */}
-          <div className="col-span-1">
-            <h4 className="font-semibold text-gray-100">Product</h4>
-            <div className="mt-3 grid space-y-3">
-              <p>
+          {/* nav - start */}
+          <div>
+            <div className="mb-4 font-bold uppercase tracking-widest text-white">
+              Products
+            </div>
+            <nav className="flex flex-col gap-4">
+              <div>
                 <a
-                  className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-hidden focus:text-gray-200 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
                   href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
+                >
+                  Overview
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
+                >
+                  Solutions
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
                 >
                   Pricing
                 </a>
-              </p>
-              <p>
+              </div>
+              <div>
                 <a
-                  className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-hidden focus:text-gray-200 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
                   href="#"
-                >
-                  Changelog
-                </a>
-              </p>
-              <p>
-                <a
-                  className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-hidden focus:text-gray-200 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
-                  href="#"
-                >
-                  Docs
-                </a>
-              </p>
-            </div>
-          </div>
-          {/* End Col */}
-          <div className="col-span-1">
-            <h4 className="font-semibold text-gray-100">Company</h4>
-            <div className="mt-3 grid space-y-3">
-              <p>
-                <a
-                  className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-hidden focus:text-gray-200 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
-                  href="#"
-                >
-                  About us
-                </a>
-              </p>
-              <p>
-                <a
-                  className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-hidden focus:text-gray-200 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
-                  href="#"
-                >
-                  Blog
-                </a>
-              </p>
-              <p>
-                <a
-                  className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-hidden focus:text-gray-200 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
-                  href="#"
-                >
-                  Careers
-                </a>{" "}
-                <span className="inline-block ms-1 text-xs bg-blue-700 text-white py-1 px-2 rounded-lg">
-                  We're hiring
-                </span>
-              </p>
-              <p>
-                <a
-                  className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-hidden focus:text-gray-200 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
-                  href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
                 >
                   Customers
                 </a>
-              </p>
-            </div>
+              </div>
+            </nav>
           </div>
-          {/* End Col */}
-          <div className="col-span-2">
-            <h4 className="font-semibold text-gray-100">Stay up to date</h4>
-            <form>
-              <div className="mt-4 flex flex-col items-center gap-2 sm:flex-row sm:gap-3 bg-white rounded-lg p-2 dark:bg-neutral-900">
-                <div className="w-full">
-                  <label htmlFor="hero-input" className="sr-only">
-                    Subscribe
-                  </label>
-                  <input
-                    type="text"
-                    id="hero-input"
-                    name="hero-input"
-                    className="py-2.5 sm:py-3 px-4 block w-full border-transparent rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-transparent dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                    placeholder="Enter your email"
-                  />
-                </div>
+          {/* nav - end */}
+          {/* nav - start */}
+          <div>
+            <div className="mb-4 font-bold uppercase tracking-widest text-white">
+              Company
+            </div>
+            <nav className="flex flex-col gap-4">
+              <div>
                 <a
-                  className="w-full sm:w-auto whitespace-nowrap p-3 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
                   href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
                 >
-                  Subscribe
+                  About
                 </a>
               </div>
-              <p className="mt-3 text-sm text-gray-400">
-                New UI kits or big discounts. Never spam.
-              </p>
-            </form>
+              <div>
+                <a
+                  href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
+                >
+                  Investor Relations
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
+                >
+                  Jobs
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
+                >
+                  Press
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
+                >
+                  Blog
+                </a>
+              </div>
+            </nav>
           </div>
-          {/* End Col */}
-        </div>
-        {/* End Grid */}
-        <div className="mt-5 sm:mt-12 grid gap-y-2 sm:gap-y-0 sm:flex sm:justify-between sm:items-center">
-          <div className="flex flex-wrap justify-between items-center gap-2">
-            <p className="text-sm text-gray-400 dark:text-neutral-400">
-              © 2025 Preline Labs.
-            </p>
-          </div>
-          {/* End Col */}
-          {/* Social Brands */}
+          {/* nav - end */}
+          {/* nav - start */}
           <div>
-            <a
-              className="size-10 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-white hover:bg-white/10 focus:outline-hidden focus:bg-white/10 disabled:opacity-50 disabled:pointer-events-none"
-              href="#"
-            >
-              <svg
-                className="shrink-0 size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width={16}
-                height={16}
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
-              </svg>
-            </a>
-            <a
-              className="size-10 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-white hover:bg-white/10 focus:outline-hidden focus:bg-white/10 disabled:opacity-50 disabled:pointer-events-none"
-              href="#"
-            >
-              <svg
-                className="shrink-0 size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width={16}
-                height={16}
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z" />
-              </svg>
-            </a>
-            <a
-              className="size-10 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-white hover:bg-white/10 focus:outline-hidden focus:bg-white/10 disabled:opacity-50 disabled:pointer-events-none"
-              href="#"
-            >
-              <svg
-                className="shrink-0 size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width={16}
-                height={16}
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
-              </svg>
-            </a>
-            <a
-              className="size-10 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-white hover:bg-white/10 focus:outline-hidden focus:bg-white/10 disabled:opacity-50 disabled:pointer-events-none"
-              href="#"
-            >
-              <svg
-                className="shrink-0 size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width={16}
-                height={16}
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-              </svg>
-            </a>
-            <a
-              className="size-10 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-white hover:bg-white/10 focus:outline-hidden focus:bg-white/10 disabled:opacity-50 disabled:pointer-events-none"
-              href="#"
-            >
-              <svg
-                className="shrink-0 size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width={16}
-                height={16}
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path d="M3.362 10.11c0 .926-.756 1.681-1.681 1.681S0 11.036 0 10.111C0 9.186.756 8.43 1.68 8.43h1.682v1.68zm.846 0c0-.924.756-1.68 1.681-1.68s1.681.756 1.681 1.68v4.21c0 .924-.756 1.68-1.68 1.68a1.685 1.685 0 0 1-1.682-1.68v-4.21zM5.89 3.362c-.926 0-1.682-.756-1.682-1.681S4.964 0 5.89 0s1.68.756 1.68 1.68v1.682H5.89zm0 .846c.924 0 1.68.756 1.68 1.681S6.814 7.57 5.89 7.57H1.68C.757 7.57 0 6.814 0 5.89c0-.926.756-1.682 1.68-1.682h4.21zm6.749 1.682c0-.926.755-1.682 1.68-1.682.925 0 1.681.756 1.681 1.681s-.756 1.681-1.68 1.681h-1.681V5.89zm-.848 0c0 .924-.755 1.68-1.68 1.68A1.685 1.685 0 0 1 8.43 5.89V1.68C8.43.757 9.186 0 10.11 0c.926 0 1.681.756 1.681 1.68v4.21zm-1.681 6.748c.926 0 1.682.756 1.682 1.681S11.036 16 10.11 16s-1.681-.756-1.681-1.68v-1.682h1.68zm0-.847c-.924 0-1.68-.755-1.68-1.68 0-.925.756-1.681 1.68-1.681h4.21c.924 0 1.68.756 1.68 1.68 0 .926-.756 1.681-1.68 1.681h-4.21z" />
-              </svg>
-            </a>
+            <div className="mb-4 font-bold uppercase tracking-widest text-white">
+              Support
+            </div>
+            <nav className="flex flex-col gap-4">
+              <div>
+                <a
+                  href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
+                >
+                  Contact
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
+                >
+                  Documentation
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
+                >
+                  Chat
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
+                >
+                  FAQ
+                </a>
+              </div>
+            </nav>
           </div>
-          {/* End Social Brands */}
+          {/* nav - end */}
+          {/* nav - start */}
+          <div>
+            <div className="mb-4 font-bold uppercase tracking-widest text-white">
+              Legal
+            </div>
+            <nav className="flex flex-col gap-4">
+              <div>
+                <a
+                  href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
+                >
+                  Terms of Service
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
+                >
+                  Privacy Policy
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="text-gray-400 transition duration-100 hover:text-rose-400 active:text-rose-600"
+                >
+                  Cookie settings
+                </a>
+              </div>
+            </nav>
+          </div>
+          {/* nav - end */}
         </div>
-      </div>
-    </footer>
-    {/* ========== END FOOTER ========== */}
-  </>
-  </div>
+        <div className="border-t border-gray-800 py-8 text-center text-sm text-gray-400">
+          © 2025 - Present voxbuy. All rights reserved.
+        </div>
+      </footer>
+    </div>
+
   )
 }
 
