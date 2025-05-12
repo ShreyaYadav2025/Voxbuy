@@ -19,22 +19,15 @@ const SignupSchema = Yup.object().shape({
   .matches(/\W/,' special character letter is required'),
   confirmPassword: Yup.string().required('confirm password is required')
   .oneOf([ Yup.ref('password'),null], 'passwords must match')
-
-  
-
 });
-
 
 const Signup = () => {
 
   const signupForm = useFormik({
     initialValues: {
       name: '',
-
       email: '',
-
       password: '',
-
       confirmPassword: '',
     },
     onSubmit:async (values) => {
@@ -46,25 +39,23 @@ const Signup = () => {
      } catch (error) {
       console.log(error);
       toast.error('something went wrong');
-      
      }
     },
     validationSchema:SignupSchema
-
   });
 
   return (
-    <div className=" bg-gradient-to-r from-pink-500 via-purple-500 to-teal-400 min-h-screen flex items-center justify-center shadow-xl bg-gradient-to-br from-gray-50 to-gray-100">
-      <div className=" mt-7 max-w-md w-full bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 dark:bg-neutral-800 border-neutral-700">
+    <div className="bg-black min-h-screen flex items-center justify-center">
+      <div className="mt-7 max-w-md w-full bg-gray-900 border border-rose-800 rounded-2xl shadow-lg hover:shadow-rose-900/20 transition-shadow duration-300">
         <div className="p-6 sm:p-8">
           <div className="text-center">
-            <h1 className="block text-3xl font-bold text-gray-800 dark:text-white">
+            <h1 className="block text-3xl font-bold text-white">
               Sign up
             </h1>
-            <p className="mt-3 text-sm text-gray-600 dark:text-neutral-400">
+            <p className="mt-3 text-sm text-gray-400">
               Already have an account?
               <a
-                className="ml-1 text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500"
+                className="ml-1 text-rose-400 decoration-2 hover:underline font-medium"
                 href="/login"
               >
                 Log in 
@@ -75,7 +66,7 @@ const Signup = () => {
           <div className="mt-5">
             <button
               type="button"
-              className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus:ring-neutral-600"
+              className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-700 bg-gray-800 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-rose-500"
             >
               <svg
                 className="w-4 h-auto"
@@ -104,7 +95,7 @@ const Signup = () => {
               Sign up with Google
             </button>
 
-            <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-200 before:me-6 after:flex-1 after:border-t after:border-gray-200 after:ms-6 dark:text-neutral-500 dark:before:border-neutral-600 dark:after:border-neutral-600">
+            <div className="py-3 flex items-center text-xs text-gray-500 uppercase before:flex-1 before:border-t before:border-gray-700 before:me-6 after:flex-1 after:border-t after:border-gray-700 after:ms-6">
               Or
             </div>
 
@@ -113,7 +104,7 @@ const Signup = () => {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm mb-2 dark:text-white"
+                    className="block text-sm mb-2 text-gray-200"
                   >
                     Name
                   </label>
@@ -123,12 +114,12 @@ const Signup = () => {
                       id="name"
                       onChange={signupForm.handleChange}
                       value={signupForm.values.name}
-                      className="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-blue-500/30"
-                      aria-describedby="email-error"
+                      className="py-3 px-4 block w-full bg-gray-800 border border-gray-700 rounded-lg text-sm focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none text-white placeholder-gray-500"
+                      aria-describedby="name-error"
                     />
                     <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                       <svg
-                        className="size-5 text-red-500"
+                        className="size-5 text-rose-500"
                         width={16}
                         height={16}
                         fill="currentColor"
@@ -141,7 +132,7 @@ const Signup = () => {
                   </div>
                   {
                     (signupForm.touched.name && signupForm.errors.name)
-                    &&( <p className="text-xs text-red-600 mt-2" id="email-error">
+                    && (<p className="text-xs text-rose-500 mt-2" id="name-error">
                         {signupForm.errors.name}
                         </p>
                       )
@@ -150,7 +141,7 @@ const Signup = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm mb-2 dark:text-white"
+                    className="block text-sm mb-2 text-gray-200"
                   >
                     Email address
                   </label>
@@ -160,12 +151,12 @@ const Signup = () => {
                       id="email"
                       onChange={signupForm.handleChange}
                       value={signupForm.values.email}
-                      className="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-blue-500/30"
+                      className="py-3 px-4 block w-full bg-gray-800 border border-gray-700 rounded-lg text-sm focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none text-white placeholder-gray-500"
                       aria-describedby="email-error"
                     />
                     <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                       <svg
-                        className="size-5 text-red-500"
+                        className="size-5 text-rose-500"
                         width={16}
                         height={16}
                         fill="currentColor"
@@ -178,17 +169,16 @@ const Signup = () => {
                   </div>
                   {
                     (signupForm.touched.email && signupForm.errors.email)
-                    &&( <p className="text-xs text-red-600 mt-2" id="email-error">
+                    && (<p className="text-xs text-rose-500 mt-2" id="email-error">
                         {signupForm.errors.email}
                         </p>
                       )
                   }
-
                 </div>
                 <div>
                   <label
                     htmlFor="password"
-                    className="block text-sm mb-2 dark:text-white"
+                    className="block text-sm mb-2 text-gray-200"
                   >
                     Password
                   </label>
@@ -198,12 +188,12 @@ const Signup = () => {
                       id="password"
                       onChange={signupForm.handleChange}
                       value={signupForm.values.password}
-                      className="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-blue-500/30"
+                      className="py-3 px-4 block w-full bg-gray-800 border border-gray-700 rounded-lg text-sm focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none text-white placeholder-gray-500"
                       aria-describedby="password-error"
                     />
                     <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                       <svg
-                        className="size-5 text-red-500"
+                        className="size-5 text-rose-500"
                         width={16}
                         height={16}
                         fill="currentColor"
@@ -216,17 +206,16 @@ const Signup = () => {
                   </div>
                   {
                     (signupForm.touched.password && signupForm.errors.password)
-                    &&( <p className="text-xs text-red-600 mt-2" id="email-error">
+                    && (<p className="text-xs text-rose-500 mt-2" id="password-error">
                         {signupForm.errors.password}
                         </p>
                       )
                   }
-
                 </div>
                 <div>
                   <label
                     htmlFor="confirm-password"
-                    className="block text-sm mb-2 dark:text-white"
+                    className="block text-sm mb-2 text-gray-200"
                   >
                     Confirm Password
                   </label>
@@ -236,12 +225,12 @@ const Signup = () => {
                       id="confirmPassword"
                       onChange={signupForm.handleChange}
                       value={signupForm.values.confirmPassword}
-                      className="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-blue-500/30"
+                      className="py-3 px-4 block w-full bg-gray-800 border border-gray-700 rounded-lg text-sm focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none text-white placeholder-gray-500"
                       aria-describedby="confirm-password-error"
                     />
                     <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                       <svg
-                        className="size-5 text-red-500"
+                        className="size-5 text-rose-500"
                         width={16}
                         height={16}
                         fill="currentColor"
@@ -254,7 +243,7 @@ const Signup = () => {
                   </div>
                   {
                     (signupForm.touched.confirmPassword && signupForm.errors.confirmPassword)
-                    &&( <p className="text-xs text-red-600 mt-2" id="email-error">
+                    && (<p className="text-xs text-rose-500 mt-2" id="confirm-password-error">
                         {signupForm.errors.confirmPassword}
                         </p>
                       )
@@ -266,14 +255,14 @@ const Signup = () => {
                       id="remember-me"
                       name="remember-me"
                       type="checkbox"
-                      className="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                      className="shrink-0 mt-0.5 border-gray-700 rounded-sm text-rose-600 focus:ring-rose-500 bg-gray-800 checked:bg-rose-500 checked:border-rose-500"
                     />
                   </div>
                   <div className="ms-3">
-                    <label htmlFor="remember-me" className="text-sm dark:text-white">
+                    <label htmlFor="remember-me" className="text-sm text-gray-200">
                       I accept the{" "}
                       <a
-                        className="text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500"
+                        className="text-rose-400 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium"
                         href="#"
                       >
                         Terms and Conditions
@@ -283,7 +272,7 @@ const Signup = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-sm hover:shadow-md transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none dark:focus:ring-offset-neutral-800"
+                  className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-rose-700 text-white hover:bg-rose-800 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 shadow-sm hover:shadow-md transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none"
                 >
                   Sign up
                 </button>

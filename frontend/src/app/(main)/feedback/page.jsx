@@ -42,16 +42,16 @@ const page = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="min-h-screen bg-black py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md mx-auto bg-gray-900 rounded-lg shadow-xl overflow-hidden border border-rose-800">
         <div className="px-6 py-8">
-          <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">
+          <h2 className="text-2xl font-bold text-center text-rose-200 mb-8">
             Share Your Feedback
           </h2>
           <form onSubmit={formik.handleSubmit} className="space-y-6">
             {/* Name Input */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="name" className="block text-sm font-medium text-rose-100">
                 Name
               </label>
               <input
@@ -61,17 +61,17 @@ const page = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.name}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                className="mt-1 block w-full rounded-md bg-gray-800 border-gray-700 text-white shadow-sm focus:border-rose-500 focus:ring-rose-500"
                 placeholder="Your name"
               />
               {formik.touched.name && formik.errors.name && (
-                <div className="mt-1 text-xs text-red-500">{formik.errors.name}</div>
+                <div className="mt-1 text-xs text-rose-400">{formik.errors.name}</div>
               )}
             </div>
 
             {/* Email Input */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium text-rose-100">
                 Email
               </label>
               <input
@@ -81,17 +81,17 @@ const page = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                className="mt-1 block w-full rounded-md bg-gray-800 border-gray-700 text-white shadow-sm focus:border-rose-500 focus:ring-rose-500"
                 placeholder="your.email@example.com"
               />
               {formik.touched.email && formik.errors.email && (
-                <div className="mt-1 text-xs text-red-500">{formik.errors.email}</div>
+                <div className="mt-1 text-xs text-rose-400">{formik.errors.email}</div>
               )}
             </div>
 
             {/* Description Textarea */}
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="description" className="block text-sm font-medium text-rose-100">
                 Description
               </label>
               <textarea
@@ -101,18 +101,18 @@ const page = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.description}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                className="mt-1 block w-full rounded-md bg-gray-800 border-gray-700 text-white shadow-sm focus:border-rose-500 focus:ring-rose-500"
                 placeholder="Please share your feedback..."
               />
               {formik.touched.description && formik.errors.description && (
-                <div className="mt-1 text-xs text-red-500">{formik.errors.description}</div>
+                <div className="mt-1 text-xs text-rose-400">{formik.errors.description}</div>
               )}
             </div>
 
             <button
               type="submit"
               disabled={formik.isSubmitting}
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-rose-800 hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {formik.isSubmitting ? 'Submitting...' : 'Submit Feedback'}
             </button>

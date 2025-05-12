@@ -129,19 +129,12 @@ const pageDetails = [
   },
 ]
 
-// const speechRef = useRef(null);
 
-// useEffect(() => {
-//   if (typeof window !== 'undefined') {
-//     speechRef.current = new SpeechSynthesisUtterance();
-//   }
-// }, []);
-
-// const speech = new SpeechSynthesisUtterance();
+const speech = new SpeechSynthesisUtterance();
 const VoiceContext = createContext();
 
 export const VoiceProvider = ({ children }) => {
-
+  
   const [showModal, setShowModal] = useState(false);
   const [showInstruction, setShowInstruction] = useState(false);
 
@@ -151,7 +144,14 @@ export const VoiceProvider = ({ children }) => {
     description: '',
     centered: true
   })
-
+  
+  const speechRef = useRef(null);
+  
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      speechRef.current = new SpeechSynthesisUtterance();
+    }
+  }, []);
   const hasRun = useRef(false);
   const router = useRouter();
 
@@ -549,9 +549,9 @@ export const VoiceProvider = ({ children }) => {
           )}
         </button>
         
-        {/* Transcript display */}
+        {/* Move transcript display below the mic button */}
         {listening && transcript && (
-          <div className='bg-[#8C52FF]/90 text-white px-4 py-2 rounded-lg max-w-xs text-sm backdrop-blur-sm'>
+          <div className='bg-[#8C52FF]/90 text-white px-4 py-2 rounded-lg max-w-xs text-sm backdrop-blur-sm mt-2'>
             {transcript}
           </div>
         )}
