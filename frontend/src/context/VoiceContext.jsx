@@ -84,8 +84,8 @@ const pageDetails = [
     pagePath: '/resetPassword'
   },
   {
-    pageName: 'productView',
-    pagePath: '/productView'
+    pageName: 'browseproduct',
+    pagePath: '/browseproduct'
   },
   {
     pageName: 'sellerdashboard',
@@ -100,8 +100,8 @@ const pageDetails = [
     pagePath: '/seller/manageProduct'
   },
   {
-    pageName: 'sellersignup',
-    pagePath: '/seller/sellersignup'
+    pageName: 'feedback',
+    pagePath: '/feedback'
   },
   {
     pageName: 'admindashboard',
@@ -124,8 +124,8 @@ const pageDetails = [
     pagePath: '/admin/adminprofile'
   },
   {
-    pageName: 'cheakout',
-    pagePath: '/user/cheakout'
+    pageName: 'checkout',
+    pagePath: '/user/checkout'
   },
 ]
 
@@ -191,9 +191,11 @@ export const VoiceProvider = ({ children }) => {
     },
     {
       command: 'I want to buy something',
+      command: 'I want to buy',
+      command: 'I want to shop',
       callback: (pageName) => {
         console.log('Opening page: ', pageName);
-        voicePageNavigator('productView')
+        voicePageNavigator('browseproduct')
       }
     },
     {
@@ -218,18 +220,18 @@ export const VoiceProvider = ({ children }) => {
       }
     },
     {
-      command: 'open cheak out page',
+      command: 'open check out page',
       callback: (pageName) => {
         console.log('Opening page: ', pageName);
-        voicePageNavigator('cheakout')
+        voicePageNavigator('checkout')
       }
     },
     
     {
-      command: 'open contact page',
+      command: 'open feedback page',
       callback: (pageName) => {
         console.log('Opening page: ', pageName);
-        voicePageNavigator('contact')
+        voicePageNavigator('Feedback')
       }
     },
     {
