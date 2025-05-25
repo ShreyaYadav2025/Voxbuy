@@ -324,7 +324,7 @@
 
 //                   {/* Price */}
 //                   <div className="text-xl font-bold text-rose-500 mb-3">
-//                     ${product.price.toFixed(2)}
+//                     ₹{product.price.toFixed(2)}
 //                   </div>
 
 //                   {/* Product Options */}
@@ -622,7 +622,7 @@ const BrowseProduct = () => {
             <div key={product._id} className="bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-rose-900/20 hover:shadow-lg transition-all duration-300">
               <Link href={`/view-product/${product._id}`}>
                 {/* Product Image Container - Fixed height and width */}
-                <div className="h-64 w-full bg-gray-800 flex items-center justify-center p-4 overflow-hidden">
+                <div className="h-64 w-full bg-white flex items-center justify-center p-4 overflow-hidden">
                   {product.image && product.image.length > 0 ? (
                     <img
                       src={product.image[0]}
@@ -655,7 +655,7 @@ const BrowseProduct = () => {
 
                   {/* Price */}
                   <div className="text-xl font-bold text-rose-500 mb-3">
-                    ${product.price.toFixed(2)}
+                    ₹{product.price.toFixed(2)}
                   </div>
 
                   {/* Product Options */}

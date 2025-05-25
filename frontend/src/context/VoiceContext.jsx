@@ -130,11 +130,18 @@ const pageDetails = [
 ]
 
 
-const speech = new SpeechSynthesisUtterance();
 const VoiceContext = createContext();
 
 export const VoiceProvider = ({ children }) => {
-  
+  const [speech, setSpeech] = useState(null);
+
+  // Initialize speech when component mounts in browser
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setSpeech(new window.SpeechSynthesisUtterance());
+    }
+  }, []);
+
   const [showModal, setShowModal] = useState(false);
   const [showInstruction, setShowInstruction] = useState(false);
 
@@ -144,9 +151,9 @@ export const VoiceProvider = ({ children }) => {
     description: '',
     centered: true
   })
-  
+
   const speechRef = useRef(null);
-  
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       speechRef.current = new SpeechSynthesisUtterance();
@@ -191,8 +198,6 @@ export const VoiceProvider = ({ children }) => {
     },
     {
       command: 'I want to buy something',
-      command: 'I want to buy',
-      command: 'I want to shop',
       callback: (pageName) => {
         console.log('Opening page: ', pageName);
         voicePageNavigator('browseproduct')
@@ -226,7 +231,7 @@ export const VoiceProvider = ({ children }) => {
         voicePageNavigator('checkout')
       }
     },
-    
+
     {
       command: 'open feedback page',
       callback: (pageName) => {
@@ -457,10 +462,12 @@ export const VoiceProvider = ({ children }) => {
       router.push('/productView');
     }
   }, [finalTranscript])
-  
+
   const voiceResponse = (text) => {
-    speech.text = text;
-    window.speechSynthesis.speak(speech);
+    if (speech && typeof window !== 'undefined') {
+      speech.text = text;
+      window.speechSynthesis.speak(speech);
+    }
   }
 
   const interpretVoiceCommand = () => {
@@ -499,19 +506,35 @@ export const VoiceProvider = ({ children }) => {
 
   useEffect(() => {
     const synth = window.speechSynthesis;
-    if ("onvoiceschanged" in synth) {
-      setVoices(voices);
-      console.log(voices);
-      synth.onvoiceschanged = loadVoices;
+    
+    // Load voices immediately in case they're already available
+    const voices = synth.getVoices();
+    if (voices.length > 0) {
+      loadVoices();
     }
-  }, [])
+
+    // Also listen for the voiceschanged event
+    synth.addEventListener('voiceschanged', loadVoices);
+    
+    // Cleanup listener
+    return () => {
+      synth.removeEventListener('voiceschanged', loadVoices);
+    };
+  }, [speech]) // Add speech as dependency since we use it in loadVoices
 
   const loadVoices = () => {
     const synth = window.speechSynthesis;
     const voices = synth.getVoices();
     setVoices(voices);
-    console.log(voices);
-    speech.voice = voices[5];
+    console.log('Available voices:', voices);
+    
+    // Only set voice if speech and voices are available
+    if (speech && voices.length > 0) {
+      // Try to find an English voice, fallback to first available voice
+      const englishVoice = voices.find(voice => voice.lang.startsWith('en-')) || voices[0];
+      speech.voice = englishVoice;
+      console.log('Selected voice:', englishVoice);
+    }
   }
 
   const checkExistenceInTranscript = (commandArray) => {
@@ -534,7 +557,7 @@ export const VoiceProvider = ({ children }) => {
     }}>
 
       <div className='fixed bottom-6 right-6 flex flex-col items-end gap-2 z-50'>
-        <button 
+        <button
           className='w-12 h-12 rounded-full bg-[#8C52FF] text-white shadow-lg hover:bg-[#7340d3] transition-all duration-200 flex items-center justify-center'
           onClick={() => {
             if (listening) {
@@ -550,11 +573,13 @@ export const VoiceProvider = ({ children }) => {
             <FaMicrophone size={20} />
           )}
         </button>
-        
-        {/* Move transcript display below the mic button */}
-        {listening && transcript && (
-          <div className='bg-[#8C52FF]/90 text-white px-4 py-2 rounded-lg max-w-xs text-sm backdrop-blur-sm mt-2'>
-            {transcript}
+
+        {/* Transcript Display */}
+        {(listening || transcript) && (
+          <div className='bg-[#8C52FF]/90 text-white px-4 py-2 rounded-lg max-w-[300px] shadow-lg backdrop-blur-sm'>
+            <p className='text-sm font-medium break-words'>
+              {transcript || 'Listening...'}
+            </p>
           </div>
         )}
       </div>

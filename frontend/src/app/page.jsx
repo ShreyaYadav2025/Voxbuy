@@ -1,18 +1,19 @@
 import React from 'react'
 import { FaInstagram, FaPinterest, FaTwitter } from 'react-icons/fa6';
+import FeaturedProducts from '@/components/FeaturedProducts';
 
 const Home = () => {
   return (
     <div className="bg-black">
       {/* hero - start */}
       <div className="bg-gradient-to-b from-black via-maroon-900 to-rose-900 pb-6 sm:pb-8 lg:pb-12">
-        <section className="mx-auto max-w-screen-2xl px-4 md:px-8">
+        <section className="mx-auto max-w-screen-2xl px-4 md:px-8 py-16">
           <div className="mb-8 flex flex-wrap justify-between md:mb-16">
             <div className="mb-6 flex w-full flex-col justify-center sm:mb-12 lg:mb-0 lg:w-1/3 lg:pb-24 lg:pt-48">
               <h1 className="mb-4 text-4xl font-bold text-white sm:text-5xl md:mb-8 md:text-6xl">
                 Discover Your
                 <br />
-                <span className="bg-gradient-to-r from-rose-400 to-maroon-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-rose-500 to-red-700 bg-clip-text text-transparent">
                   Perfect Style
                 </span>
               </h1>
@@ -31,18 +32,18 @@ const Home = () => {
             <div className="mb-12 flex w-full md:mb-16 lg:w-2/3 ">
               <div className="relative left-12 top-12 z-10 -ml-12 overflow-hidden rounded-lg bg-gray-900 shadow-lg md:left-16 md:top-16 lg:ml-0">
                 <img
-                  src="https://images.unsplash.com/photo-1542340916-951bb72c8f74?auto=format&q=75&fit=crop&w=550&h=550"
+                  src="https://images.pexels.com/photos/5622859/pexels-photo-5622859.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                   loading="lazy"
                   alt="Photo by Kaung Htet"
-                  className="h-full w-full object-cover object-center transition duration-200 hover:scale-110"
+                  className="h-full w-[550px] object-cover object-center transition duration-200 hover:scale-110"
                 />
               </div>
               <div className="overflow-hidden rounded-lg bg-gray-900 shadow-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1586295166487-b265f7e83a7f?auto=format&q=75&fit=crop&w=550&h=550"
+                  src="https://images.pexels.com/photos/5418892/pexels-photo-5418892.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                   loading="lazy"
                   alt="Photo by Manny Moreno"
-                  className="h-full w-full object-cover object-center transition duration-200 hover:scale-110"
+                  className="h-full w-[550px] object-cover object-center transition duration-200 hover:scale-110"
                 />
               </div>
             </div>
@@ -119,115 +120,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid gap-x-4 gap-y-8 sm:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:grid-cols-4">
-            {/* Product Cards */}
-            <div className="group relative">
-              <div className="relative mb-2 overflow-hidden rounded-lg bg-gray-900">
-                <img
-                  src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&q=75&fit=crop&crop=top&w=600&h=700"
-                  loading="lazy"
-                  alt="Photo by Austin Wade"
-                  className="h-96 w-full object-cover object-center transition duration-200 group-hover:scale-110"
-                />
-                <div className="absolute bottom-2 left-0 flex gap-2">
-                  <span className="rounded-r-lg bg-rose-600 px-3 py-1.5 text-sm font-semibold uppercase tracking-wider text-white">
-                    -50%
-                  </span>
-                  <span className="rounded-lg bg-gray-800 px-3 py-1.5 text-sm font-bold uppercase tracking-wider text-white">
-                    New
-                  </span>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
-              </div>
-              <div className="flex items-start justify-between gap-2 px-2">
-                <div className="flex flex-col">
-                  <a
-                    href="#"
-                    className="text-lg font-bold text-white transition duration-100 hover:text-gray-300 lg:text-xl"
-                  >
-                    Fancy Outfit
-                  </a>
-                  <span className="text-gray-400">by Fancy Brand</span>
-                </div>
-                <div className="flex flex-col items-end">
-                  <span className="font-bold text-gray-300 lg:text-lg">$19.99</span>
-                  <span className="text-sm text-rose-500 line-through">$39.99</span>
-                </div>
-              </div>
-            </div>
-            <div className="group relative">
-              <div className="relative mb-2 overflow-hidden rounded-lg bg-gray-900">
-                <img
-                  src="https://images.unsplash.com/photo-1523359346063-d879354c0ea5?auto=format&q=75&fit=crop&crop=top&w=600&h=700"
-                  loading="lazy"
-                  alt="Photo by Nick Karvounis"
-                  className="h-96 w-full object-cover object-center transition duration-200 group-hover:scale-110"
-                />
-              </div>
-              <div className="flex items-start justify-between gap-2 px-2">
-                <div className="flex flex-col">
-                  <a
-                    href="#"
-                    className="text-lg font-bold text-white transition duration-100 hover:text-gray-300 lg:text-xl"
-                  >
-                    Cool Outfit
-                  </a>
-                  <span className="text-gray-400">by Cool Brand</span>
-                </div>
-                <div className="flex flex-col items-end">
-                  <span className="font-bold text-gray-300 lg:text-lg">$29.99</span>
-                </div>
-              </div>
-            </div>
-            <div className="group relative">
-              <div className="relative mb-2 overflow-hidden rounded-lg bg-gray-900">
-                <img
-                  src="https://images.unsplash.com/photo-1548286978-f218023f8d18?auto=format&q=75&fit=crop&crop=top&w=600&h=700"
-                  loading="lazy"
-                  alt="Photo by Austin Wade"
-                  className="h-96 w-full object-cover object-center transition duration-200 group-hover:scale-110"
-                />
-              </div>
-              <div className="flex items-start justify-between gap-2 px-2">
-                <div className="flex flex-col">
-                  <a
-                    href="#"
-                    className="text-lg font-bold text-white transition duration-100 hover:text-gray-300 lg:text-xl"
-                  >
-                    Nice Outfit
-                  </a>
-                  <span className="text-gray-400">by Nice Brand</span>
-                </div>
-                <div className="flex flex-col items-end">
-                  <span className="font-bold text-gray-300 lg:text-lg">$35.00</span>
-                </div>
-              </div>
-            </div>
-            <div className="group relative">
-              <div className="relative mb-2 overflow-hidden rounded-lg bg-gray-900">
-                <img
-                  src="https://images.unsplash.com/photo-1566207274740-0f8cf6b7d5a5?auto=format&q=75&fit=crop&crop=top&w=600&h=700"
-                  loading="lazy"
-                  alt="Photo by Vladimir Fedotov"
-                  className="h-96 w-full object-cover object-center transition duration-200 group-hover:scale-110"
-                />
-              </div>
-              <div className="flex items-start justify-between gap-2 px-2">
-                <div className="flex flex-col">
-                  <a
-                    href="#"
-                    className="text-lg font-bold text-white transition duration-100 hover:text-gray-300 lg:text-xl"
-                  >
-                    Lavish Outfit
-                  </a>
-                  <span className="text-gray-400">by Lavish Brand</span>
-                </div>
-                <div className="flex flex-col items-end">
-                  <span className="font-bold text-gray-300 lg:text-lg">$49.99</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <FeaturedProducts />
         </div>
       </div>
 

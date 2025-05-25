@@ -168,18 +168,22 @@ export default function CheckoutPage() {
     }
   };
 
-  const handleSubmit = async (values) => {
-    if (values.paymentMethod === 'card') {
+  const handleSubmit = async (values) => {    if (values.paymentMethod === 'online') {
       handlePayment(async (paymentStatus) => {
-        await processOrder(values, paymentStatus);
+        // Map payment status to valid order status
+        const orderStatus = paymentStatus === 'Complete' ? 'processing' : 'pending';
+        await processOrder(values, orderStatus);
       });
     } else {
       // For Cash on Delivery
-      await processOrder(values, 'Pending');
+      await processOrder(values, 'pending');
     }
   };
 
   const processOrder = async (values, status) => {
+    // Debug log
+    console.log('Cart Items:', cartItems);
+    
     const order = {
       user: {
         firstName: userData?.firstName || values.fullName.split(' ')[0],
@@ -194,14 +198,24 @@ export default function CheckoutPage() {
         zipCode: values.postalCode,
         country: values.country,
       },
-      items: cartItems,
-      totalAmount: totalAmount,
+      items: cartItems.map(item => ({
+        productId: item._id,  // Ensure we're using the correct product ID field
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        selectedSize: item.selectedSize || undefined,
+        selectedColor: item.selectedColor || undefined,
+        image: Array.isArray(item.image) ? item.image : [item.image].filter(Boolean)
+      })),
+      totalAmount: parseFloat(totalAmount),
       orderNotes: values.orderNotes || '',
       paymentMethod: values.paymentMethod,
       status: status,
     };
 
     try {
+      // Debug log
+      console.log('Order payload:', order);
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/order/add`, order, {
         headers: {
           'x-auth-token': localStorage.getItem('token'),
@@ -215,7 +229,7 @@ export default function CheckoutPage() {
         },
       });
       clearCart();
-      router.replace('/user/thankyou');
+      router.replace('/thankyou');
     } catch (error) {
       console.error('Order error:', error);
       toast.error('Error placing order. Please try again.', {
@@ -463,13 +477,12 @@ export default function CheckoutPage() {
                     <div className="space-y-4">
                       <div className="flex items-center p-4 border border-gray-700 rounded-lg bg-gray-800 cursor-pointer">
                         <Field
-                          type="radio"
-                          name="paymentMethod"
-                          value="card"
-                          id="card"
+                          type="radio"                          name="paymentMethod"
+                          value="online"
+                          id="online"
                           className="mr-3 h-4 w-4 accent-rose-500"
                         />
-                        <label htmlFor="card" className="flex items-center cursor-pointer">
+                        <label htmlFor="online" className="flex items-center cursor-pointer">
                           <div className="bg-white rounded p-1 mr-3">
                             <CreditCard size={20} className="text-gray-800" />
                           </div>

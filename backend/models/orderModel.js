@@ -25,7 +25,7 @@ const orderSchema = new Schema({
     }],
     totalAmount: { type: Number, required: true },
     orderNotes: { type: String },
-    paymentMethod: { type: String, enum: ['cod', 'online'] },
+    paymentMethod: { type: String, enum: ['cod', 'online', 'card'] },
     status: { 
         type: String, 
         enum: ['pending', 'processing', 'shipped', 'delivered', 'cancelled'],

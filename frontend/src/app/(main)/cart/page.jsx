@@ -15,7 +15,7 @@ const CartPage = () => {
   const subtotal = getCartTotal();
   const taxAmount = subtotal * taxRate;
   
-  // Handling fee (flat $2.99)
+  // Handling fee (flat ₹2.99)
   const handlingFee = 2.99;
   
   // Free shipping threshold
@@ -37,7 +37,7 @@ const CartPage = () => {
       setPromoSuccess('10% discount applied!');
     } else if (promoCode === 'FREE5') {
       setDiscount(5);
-      setPromoSuccess('$5 discount applied!');
+      setPromoSuccess('₹5 discount applied!');
     } else {
       setPromoError('Invalid promo code');
       setDiscount(0);
@@ -150,8 +150,8 @@ const CartPage = () => {
 
                   {/* Price */}
                   <div className="text-right">
-                    <p className="text-lg font-semibold">${(item.price * item.quantity).toFixed(2)}</p>
-                    <p className="text-sm text-gray-400">${item.price.toFixed(2)} each</p>
+                    <p className="text-lg font-semibold">₹{(item.price * item.quantity).toFixed(2)}</p>
+                    <p className="text-sm text-gray-400">₹{item.price.toFixed(2)} each</p>
                   </div>
                 </div>
               ))}
@@ -232,35 +232,35 @@ const CartPage = () => {
               <div className="space-y-3 mb-6 text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-300">Subtotal</span>
-                  <span>${subtotal.toFixed(2)}</span>
+                  <span>₹{subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-300">Tax (8.25%)</span>
-                  <span>${taxAmount.toFixed(2)}</span>
+                  <span>₹{taxAmount.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-300">Handling Fee</span>
-                  <span>${handlingFee.toFixed(2)}</span>
+                  <span>₹{handlingFee.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-300">Shipping</span>
                   {subtotal >= freeShippingThreshold ? (
                     <span className="text-green-500">Free</span>
                   ) : (
-                    <span>${shippingFee.toFixed(2)}</span>
+                    <span>₹{shippingFee.toFixed(2)}</span>
                   )}
                 </div>
                 {discount > 0 && (
                   <div className="flex justify-between text-rose-400">
                     <span>Discount</span>
-                    <span>-${discount.toFixed(2)}</span>
+                    <span>-₹{discount.toFixed(2)}</span>
                   </div>
                 )}
               </div>
               
               {subtotal < freeShippingThreshold && (
                 <div className="mb-6 bg-gray-800 p-3 rounded-lg text-sm text-center">
-                  <p>Add <span className="text-rose-400 font-bold">${(freeShippingThreshold - subtotal).toFixed(2)}</span> more for free shipping</p>
+                  <p>Add <span className="text-rose-400 font-bold">₹{(freeShippingThreshold - subtotal).toFixed(2)}</span> more for free shipping</p>
                   <div className="w-full bg-gray-700 rounded-full h-2 mt-2">
                     <div 
                       className="bg-rose-500 h-2 rounded-full" 
@@ -273,7 +273,7 @@ const CartPage = () => {
               <div className="border-t border-gray-800 pt-4 mb-6">
                 <div className="flex justify-between font-bold text-lg">
                   <span>Total</span>
-                  <span>${grandTotal.toFixed(2)}</span>
+                  <span>₹{grandTotal.toFixed(2)}</span>
                 </div>
               </div>
 

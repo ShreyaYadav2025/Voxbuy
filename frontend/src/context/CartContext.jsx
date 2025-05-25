@@ -5,13 +5,16 @@ import toast from 'react-hot-toast';
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedCart = localStorage.getItem('cart');
-      return savedCart ? JSON.parse(savedCart) : [];
+  const [cartItems, setCartItems] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+      setCartItems(JSON.parse(savedCart));
     }
-    return [];
-  });
+    setIsLoaded(true);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
@@ -98,7 +101,6 @@ export function CartProvider({ children }) {
   const getCartCount = () => {
     return cartItems.reduce((count, item) => count + item.quantity, 0);
   };
-
   return (
     <CartContext.Provider value={{
       cartItems,
@@ -107,7 +109,8 @@ export function CartProvider({ children }) {
       updateQuantity,
       clearCart,
       getCartTotal,
-      getCartCount
+      getCartCount,
+      isLoaded
     }}>
       {children}
     </CartContext.Provider>

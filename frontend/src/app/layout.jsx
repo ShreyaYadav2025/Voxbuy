@@ -29,10 +29,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+            <Toaster position="top-left" />
         <PrelineScript />
         <VoiceProvider>
           <CartProvider>
-            <Toaster />
             <Navbar />
             {children}
             <Footer />
