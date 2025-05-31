@@ -8,6 +8,9 @@ const Navbar = () => {
   const { getCartCount, isLoaded } = useCart();
   const cartCount = isLoaded ? getCartCount() : 0;
 
+  const isLoggedin = typeof window !== 'undefined' && localStorage.getItem('isLoggedIn') === 'true';
+  const userName = isLoggedin ? localStorage.getItem('userName') : '';
+
   return (
     <nav className="bg-gradient-to-r from-black via-gray-900 to-black shadow-xl sticky top-0 z-50">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -24,6 +27,7 @@ const Navbar = () => {
         </ul>
 
         <div className="flex items-center space-x-6">
+
           <Link
             href="/cart"
             className="relative text-white bg-gradient-to-r from-rose-600 to-rose-700 px-6 py-3 rounded-lg hover:from-rose-700 hover:to-rose-800 transition-all duration-300 transform hover:scale-105 shadow-lg"
@@ -38,12 +42,19 @@ const Navbar = () => {
               )}
             </span>
           </Link>
-          <Link 
-            href="/login" 
+          <Link
+            href="/login"
             className="text-lg font-medium text-white bg-gradient-to-r from-rose-600 to-rose-700 px-6 py-3 rounded-lg hover:from-rose-700 hover:to-rose-800 transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             Login
           </Link>
+          <Link
+            href="/signup"
+            className="text-lg font-medium text-white bg-gradient-to-r from-rose-600 to-rose-700 px-6 py-3 rounded-lg hover:from-rose-700 hover:to-rose-800 transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
+            Signup
+          </Link>
+
         </div>
 
         {/* Mobile menu button */}
@@ -63,10 +74,10 @@ const Navbar = () => {
             />
           </svg>
         </button>
-      </div>
+      </div >
 
       {/* Mobile menu dropdown (hidden by default) */}
-      <div className="hidden md:hidden">
+      < div className="hidden md:hidden" >
         <ul className="px-4 pt-2 pb-3 space-y-1 bg-gray-900">
           <li><Link href="/" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-rose-300 hover:bg-gray-800">Home</Link></li>
           <li><Link href="/browseproduct" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-rose-300 hover:bg-gray-800">Products</Link></li>
@@ -74,8 +85,8 @@ const Navbar = () => {
           <li><Link href="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-rose-300 hover:bg-gray-800">Contact</Link></li>
           <li><Link href="/feedback" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-rose-300 hover:bg-gray-800">Feedback</Link></li>
         </ul>
-      </div>
-    </nav>
+      </div >
+    </nav >
   );
 };
 
